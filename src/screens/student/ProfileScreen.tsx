@@ -10,7 +10,7 @@ export default function ProfileScreen({navigation}:any){
  const name=profile?.name||'Student'; const email=profile?.email||'';
  return <SafeAreaView style={styles.container}><ScrollView contentContainerStyle={styles.content}>
   <View style={styles.profile}><View style={styles.avatar}><Text style={styles.avatarText}>{name.charAt(0).toUpperCase()}</Text></View><View style={{flex:1}}><Text style={styles.name}>{name}</Text><Text style={styles.email}>{email}</Text>{profile?.studentId?<Text style={styles.id}>Student ID: {profile.studentId}</Text>:null}</View></View>
-  <View style={styles.stats}><View><Text style={styles.statValue}>CanteenQ</Text><Text style={styles.statLabel}>Student Account</Text></View><Feather name="check-circle" size={24} color={theme.colors.successDot}/></View>
+  <View style={styles.stats}><View><Text style={styles.statValue}>Bounty</Text><Text style={styles.statLabel}>Student Account</Text></View><Feather name="check-circle" size={24} color={theme.colors.successDot}/></View>
   <View style={styles.menu}><ProfileMenuItem iconName="shopping-bag" label="My Orders" onPress={()=>navigation.navigate('Orders')}/><ProfileMenuItem iconName="user" label="Personal Information" onPress={()=>Alert.alert('Profile',`${name}\n${email}`)}/><ProfileMenuItem iconName="coffee" label="My Canteen" extraText="Main Campus" onPress={()=>{}}/><ProfileMenuItem iconName="help-circle" label="Help & Support" onPress={()=>Alert.alert('Help','For support, contact your canteen administrator.')}/><ProfileMenuItem iconName="log-out" label="Logout" danger onPress={()=>Alert.alert('Logout','Are you sure?', [{text:'Cancel',style:'cancel'},{text:'Logout',style:'destructive',onPress:logout}])}/></View>
  </ScrollView></SafeAreaView>
 }
