@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "CanteenQ",
+    "slug": "canteenq",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#FFF7F0"
+    },
+    "ios": { "supportsTablet": true },
+    "android": { "adaptiveIcon": { "backgroundColor": "#FF7A00" } }
+  }
+}

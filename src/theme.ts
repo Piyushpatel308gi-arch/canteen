@@ -1,0 +1,27 @@
+export const theme = {
+  colors: {
+    primary: '#FF6536',
+    primaryLight: '#FFEBE5',
+    background: '#FAFAFA',
+    cardBg: '#FFFFFF',
+    textPrimary: '#000000',
+    textSecondary: '#757575',
+    textMuted: '#9E9E9E',
+    border: '#EEEEEE',
+    successBg: '#E8F5E9',
+    successText: '#2E7D32',
+    successDot: '#4CAF50',
+    warningBg: '#FFF3E0',
+    warningText: '#E65100',
+    danger: '#FF5252',
+  },
+  typography: {
+    brandTitle: 22,
+    mainTitle: 28,
+    sectionTitle: 18,
+    cardTitle: 14,
+    body: 14,
+    caption: 12,
+    small: 10,
+  },
+};

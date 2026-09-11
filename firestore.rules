@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function userDoc() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function role(r) { return signedIn() && userDoc().role == r && userDoc().isActive == true; }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || role("admin"));
+      allow create: if signedIn() && request.auth.uid == uid;
+      allow update: if signedIn() && (request.auth.uid == uid || role("admin"));
+      allow delete: if role("admin");
+    }
+
+    match /food_items/{id} {
+      allow read: if signedIn();
+      allow create, update, delete: if role("admin");
+    }
+
+    match /categories/{id} {
+      allow read: if signedIn();
+      allow create, update, delete: if role("admin");
+    }
+
+    match /orders/{id} {
+      allow read: if signedIn() && (resource.data.userId == request.auth.uid || role("staff") || role("admin"));
+      allow create: if false;
+      allow update: if role("staff") || role("admin");
+      allow delete: if role("admin");
+    }
+
+    match /notifications/{id} {
+      allow read: if signedIn() && resource.data.userId == request.auth.uid;
+      allow update: if signedIn() && resource.data.userId == request.auth.uid;
+      allow create, delete: if false;
+    }
+  }
+}
